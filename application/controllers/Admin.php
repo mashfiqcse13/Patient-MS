@@ -30,10 +30,15 @@ class Admin extends CI_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     function index() {
-        $this->patient();
+        $data['pageHeading'] = "Admin Panel";
+        $data['Title'] = 'Patient MS Dashboard';
+        $this->load->view('admin/sb-admin/page-blank.php', $data);
     }
 
     public function _example_output($output = null) {
+        $this->load->view('example.php', $output);
+    }
+    public function _site_output($output = null) {
         $this->load->view('admin/sb-admin/page-blank.php', $output);
     }
 
