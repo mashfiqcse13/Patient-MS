@@ -14,7 +14,7 @@
 $config['SITE_NAME'] = "Patient MS";
 $config['DEVELOPED_BY'] = "MD. Mashfiqur Rahman";
 $config['ASSET_FOLDER'] = "assets/";
-$config['ADMIN_THEME'] = 'Themes/admin/startbootstrap-sb-admin-1.0.3/'; //Theme location on view folder
+$config['ADMIN_THEME'] = 'Themes/admin/startbootstrap-sb-admin-1.0.3/'; //Theme location on view folder and asset folder
 $config['THEME_ASSET'] = $config['ASSET_FOLDER'] . $config['ADMIN_THEME'];
 $config['book_categories'] = array('Bangla', 'English', 'Math', 'ICT');
 $config['LOGIN_THEME'] = 'Login_theme/facebook-login/'; //Theme location on view folder
