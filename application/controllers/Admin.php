@@ -30,11 +30,11 @@ class Admin extends CI_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     function index() {
-        echo 'Done';
+        $this->patient();
     }
 
     public function _example_output($output = null) {
-        $this->load->view('example.php', $output);
+        $this->load->view('admin/sb-admin/page-blank.php', $output);
     }
 
     function patient() {
