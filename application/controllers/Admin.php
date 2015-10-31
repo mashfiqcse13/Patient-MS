@@ -44,23 +44,29 @@ class Admin extends CI_Controller {
         $this->load->view('example.php', $output);
     }
 
-    public function _site_output($output = null) {
+    public function _site_output($output = null, $data_override = FALSE) {
         $this->config->load('patient-ms-site');
         $ADMIN_THEME = $this->config->item('ADMIN_THEME');
         $data['THEME_ASSET_URL'] = base_url() . $this->config->item('THEME_ASSET');
 
         $data['pageHeading'] = "Admin Panel";
+        $data['subHeading'] = "Sub Heading";
         $data['Title'] = 'Patient MS Dashboard';
         if ($output) {
             $data['output'] = $output->output;
-            $data['css_files']='';
-            $data['js_files']='';
+            $data['css_files'] = '';
+            $data['js_files'] = '';
             foreach ($output->css_files as $file) {
                 $data['css_files'] .= '<link type="text/css" rel="stylesheet" href="' . $file . '" />';
             }
             foreach ($output->js_files as $file) {
                 $data['js_files'] .= '<script src="' . $file . '"></script>';
             }
+        }
+        if ($data_override) {
+            $data['pageHeading'] = $data_override['pageHeading'];
+            $data['Title'] = $data_override['Title'];
+            $data['subHeading'] = $data_override['subHeading'];
         }
 //        print_r($data);
         $this->load->view($ADMIN_THEME . 'page-blank.php', $data);
@@ -74,7 +80,24 @@ class Admin extends CI_Controller {
         $output = $crud->render();
 
 
-        $this->_site_output($output);
+        $data['pageHeading'] = "Patient";
+        $data['subHeading'] = "Database";
+        $data['Title'] = 'Patient | Patient MS Dashboard';
+        $this->_site_output($output,$data);
+    }
+
+    function doctor() {
+
+        $crud = new grocery_CRUD();
+        $crud->set_table('ms_doctor')
+                ->set_subject('Doctor');
+        $output = $crud->render();
+
+
+        $data['pageHeading'] = "Doctor";
+        $data['subHeading'] = "Database";
+        $data['Title'] = 'Doctor | Patient MS Dashboard';
+        $this->_site_output($output,$data);
     }
 
 }

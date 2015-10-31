@@ -45,20 +45,35 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li>
-            <a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+            <a href="<?= site_url()?>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
         </li>
         <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+            <a href="javascript:;" data-toggle="collapse" data-target="#patient">
                 <i class="fa fa-fw fa-arrows-v"></i> 
                 Patient Section 
                 <i class="fa fa-fw fa-caret-down"></i>
             </a>
-            <ul id="demo" class="collapse">
+            <ul id="patient" class="collapse">
                 <li>
                     <a href="<?= site_url('admin/patient/add')?>">Patient Entry</a>
                 </li>
                 <li>
                     <a href="<?= site_url('admin/patient')?>">Patient Management</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#doctor">
+                <i class="fa fa-fw fa-arrows-v"></i> 
+                Doctor Section 
+                <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            <ul id="doctor" class="collapse">
+                <li>
+                    <a href="<?= site_url('admin/doctor/add')?>">Doctor Entry</a>
+                </li>
+                <li>
+                    <a href="<?= site_url('admin/doctor')?>">Doctor Database</a>
                 </li>
             </ul>
         </li>

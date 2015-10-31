@@ -45,11 +45,11 @@ include 'template-header.php';
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             <?= $pageHeading?>
-                            <small>Subheading</small>
+                            <small><?= $subHeading?></small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="<?= site_url() ?>">Dashboard</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-file"></i> <?= $pageHeading?>
