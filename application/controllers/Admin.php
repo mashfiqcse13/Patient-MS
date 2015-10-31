@@ -44,14 +44,11 @@ class Admin extends CI_Controller {
         $this->load->view('example.php', $output);
     }
 
-    public function _site_output($output = null, $data_override = FALSE) {
+    public function _site_output($output = null, $data_override = null) {
         $this->config->load('patient-ms-site');
         $ADMIN_THEME = $this->config->item('ADMIN_THEME');
         $data['THEME_ASSET_URL'] = base_url() . $this->config->item('THEME_ASSET');
 
-        $data['pageHeading'] = "Admin Panel";
-        $data['subHeading'] = "Sub Heading";
-        $data['Title'] = 'Patient MS Dashboard';
         if ($output) {
             $data['output'] = $output->output;
             $data['css_files'] = '';
@@ -63,10 +60,12 @@ class Admin extends CI_Controller {
                 $data['js_files'] .= '<script src="' . $file . '"></script>';
             }
         }
+
+
         if ($data_override) {
             $data['pageHeading'] = $data_override['pageHeading'];
-            $data['Title'] = $data_override['Title'];
             $data['subHeading'] = $data_override['subHeading'];
+            $data['Title'] = $data_override['Title'];
         }
 //        print_r($data);
         $this->load->view($ADMIN_THEME . 'page-blank.php', $data);
@@ -83,7 +82,7 @@ class Admin extends CI_Controller {
         $data['pageHeading'] = "Patient";
         $data['subHeading'] = "Database";
         $data['Title'] = 'Patient | Patient MS Dashboard';
-        $this->_site_output($output,$data);
+        $this->_site_output($output, $data);
     }
 
     function doctor() {
@@ -97,7 +96,21 @@ class Admin extends CI_Controller {
         $data['pageHeading'] = "Doctor";
         $data['subHeading'] = "Database";
         $data['Title'] = 'Doctor | Patient MS Dashboard';
-        $this->_site_output($output,$data);
+        $this->_site_output($output, $data);
+    }
+
+    function prescription() {
+
+        $crud = new grocery_CRUD();
+        $crud->set_table('ms_prescription')
+                ->set_subject('Prescription');
+        $output = $crud->render();
+
+
+        $data['pageHeading'] = "Prescription";
+        $data['subHeading'] = "Repository";
+        $data['Title'] = 'Prescription | Patient MS Dashboard';
+        $this->_site_output($output, $data);
     }
 
 }
