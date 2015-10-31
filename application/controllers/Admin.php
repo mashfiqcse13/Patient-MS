@@ -30,16 +30,40 @@ class Admin extends CI_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     function index() {
+        $this->config->load('patient-ms-site');
+        $ADMIN_THEME = $this->config->item('ADMIN_THEME');
+        $data['THEME_ASSET_URL'] = base_url() . $this->config->item('THEME_ASSET');
+
         $data['pageHeading'] = "Admin Panel";
         $data['Title'] = 'Patient MS Dashboard';
-        $this->load->view('admin/sb-admin/page-blank.php', $data);
+        $data['output'] = '';
+        $this->load->view($ADMIN_THEME . 'page-blank.php', $data);
     }
 
     public function _example_output($output = null) {
         $this->load->view('example.php', $output);
     }
+
     public function _site_output($output = null) {
-        $this->load->view('admin/sb-admin/page-blank.php', $output);
+        $this->config->load('patient-ms-site');
+        $ADMIN_THEME = $this->config->item('ADMIN_THEME');
+        $data['THEME_ASSET_URL'] = base_url() . $this->config->item('THEME_ASSET');
+
+        $data['pageHeading'] = "Admin Panel";
+        $data['Title'] = 'Patient MS Dashboard';
+        if ($output) {
+            $data['output'] = $output->output;
+            $data['css_files']='';
+            $data['js_files']='';
+            foreach ($output->css_files as $file) {
+                $data['css_files'] .= '<link type="text/css" rel="stylesheet" href="' . $file . '" />';
+            }
+            foreach ($output->js_files as $file) {
+                $data['js_files'] .= '<script src="' . $file . '"></script>';
+            }
+        }
+//        print_r($data);
+        $this->load->view($ADMIN_THEME . 'page-blank.php', $data);
     }
 
     function patient() {
@@ -50,7 +74,7 @@ class Admin extends CI_Controller {
         $output = $crud->render();
 
 
-        $this->_example_output($output);
+        $this->_site_output($output);
     }
 
 }
