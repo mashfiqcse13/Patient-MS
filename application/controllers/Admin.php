@@ -49,10 +49,10 @@ class Admin extends CI_Controller {
         $ADMIN_THEME = $this->config->item('ADMIN_THEME');
         $data['THEME_ASSET_URL'] = base_url() . $this->config->item('THEME_ASSET');
 
+        $data['css_files'] = '';
+        $data['js_files'] = '';
         if ($output) {
             $data['output'] = $output->output;
-            $data['css_files'] = '';
-            $data['js_files'] = '';
             foreach ($output->css_files as $file) {
                 $data['css_files'] .= '<link type="text/css" rel="stylesheet" href="' . $file . '" />';
             }
@@ -61,6 +61,7 @@ class Admin extends CI_Controller {
             }
         }
 
+        $data['css_files'] .= '<link type="text/css" rel="stylesheet" href="' . base_url() . 'assets/css/main.css' . '" />';
 
         if ($data_override) {
             $data['pageHeading'] = $data_override['pageHeading'];
@@ -113,7 +114,7 @@ class Admin extends CI_Controller {
                 ->display_as('referred_doctor_ID', 'Referred Doctor Name')
                 ->callback_add_field('DX_and_RX', array($this->prescription,
                     'callback_add_field_DX_and_RX'))
-                ;
+        ;
         $output = $crud->render();
 
 
