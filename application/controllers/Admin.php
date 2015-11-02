@@ -100,16 +100,20 @@ class Admin extends CI_Controller {
     }
 
     function prescription() {
-
+        $this->load->model('prescription');
+//DX_and_RX
         $crud = new grocery_CRUD();
         $crud->set_table('ms_prescription')
                 ->set_subject('Prescription')
                 ->set_relation('patient_ID', 'ms_patient', 'patient_name')
                 ->set_relation('doctor_ID', 'ms_doctor', 'doctor_name')
                 ->set_relation('referred_doctor_ID', 'ms_doctor', 'doctor_name')
-                ->display_as('patient_ID','Patient Name')
-                ->display_as('doctor_ID','Doctor Name')
-                ->display_as('referred_doctor_ID','Referred Doctor Name');
+                ->display_as('patient_ID', 'Patient Name')
+                ->display_as('doctor_ID', 'Doctor Name')
+                ->display_as('referred_doctor_ID', 'Referred Doctor Name')
+                ->callback_add_field('DX_and_RX', array($this->prescription,
+                    'callback_add_field_DX_and_RX'))
+                ;
         $output = $crud->render();
 
 
@@ -132,13 +136,14 @@ class Admin extends CI_Controller {
         $data['Title'] = 'Users | Patient MS Dashboard';
         $this->_site_output($output, $data);
     }
+
     function test() {
 
         $crud = new grocery_CRUD();
         $crud->set_table('ms_test')
                 ->set_subject('Tests')
                 ->set_relation('hospital_ID', 'ms_hospital', 'hospital_name')
-                ->display_as('hospital_ID','Hospital Name');
+                ->display_as('hospital_ID', 'Hospital Name');
         $output = $crud->render();
 
 
@@ -147,6 +152,7 @@ class Admin extends CI_Controller {
         $data['Title'] = 'Tests | Patient MS Dashboard';
         $this->_site_output($output, $data);
     }
+
     function hospital() {
 
         $crud = new grocery_CRUD();
