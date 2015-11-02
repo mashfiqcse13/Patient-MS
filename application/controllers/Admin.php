@@ -103,13 +103,61 @@ class Admin extends CI_Controller {
 
         $crud = new grocery_CRUD();
         $crud->set_table('ms_prescription')
-                ->set_subject('Prescription');
+                ->set_subject('Prescription')
+                ->set_relation('patient_ID', 'ms_patient', 'patient_name')
+                ->set_relation('doctor_ID', 'ms_doctor', 'doctor_name')
+                ->set_relation('referred_doctor_ID', 'ms_doctor', 'doctor_name')
+                ->display_as('patient_ID','Patient Name')
+                ->display_as('doctor_ID','Doctor Name')
+                ->display_as('referred_doctor_ID','Referred Doctor Name');
         $output = $crud->render();
 
 
         $data['pageHeading'] = "Prescription";
         $data['subHeading'] = "Repository";
         $data['Title'] = 'Prescription | Patient MS Dashboard';
+        $this->_site_output($output, $data);
+    }
+
+    function user() {
+
+        $crud = new grocery_CRUD();
+        $crud->set_table('users')
+                ->set_subject('Users');
+        $output = $crud->render();
+
+
+        $data['pageHeading'] = "Users";
+        $data['subHeading'] = "Database";
+        $data['Title'] = 'Users | Patient MS Dashboard';
+        $this->_site_output($output, $data);
+    }
+    function test() {
+
+        $crud = new grocery_CRUD();
+        $crud->set_table('ms_test')
+                ->set_subject('Tests')
+                ->set_relation('hospital_ID', 'ms_hospital', 'hospital_name')
+                ->display_as('hospital_ID','Hospital Name');
+        $output = $crud->render();
+
+
+        $data['pageHeading'] = "Tests";
+        $data['subHeading'] = "Database";
+        $data['Title'] = 'Tests | Patient MS Dashboard';
+        $this->_site_output($output, $data);
+    }
+    function hospital() {
+
+        $crud = new grocery_CRUD();
+        $crud->set_table('ms_hospital')
+                ->set_subject('Hospital');
+        $output = $crud->render();
+
+
+        $data['pageHeading'] = "Hospitals";
+        $data['subHeading'] = "Database";
+        $data['Title'] = 'Hospitals | Patient MS Dashboard';
         $this->_site_output($output, $data);
     }
 

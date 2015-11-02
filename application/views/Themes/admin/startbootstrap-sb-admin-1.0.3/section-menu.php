@@ -50,45 +50,90 @@
         <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#patient">
                 <i class="fa fa-fw fa-arrows-v"></i> 
-                Patient Section 
+                Patient 
                 <i class="fa fa-fw fa-caret-down"></i>
             </a>
             <ul id="patient" class="collapse">
                 <li>
-                    <a href="<?= site_url('admin/patient/add')?>">Patient Entry</a>
+                    <a href="<?= site_url('admin/patient/add')?>">Entry</a>
                 </li>
                 <li>
-                    <a href="<?= site_url('admin/patient')?>">Patient Management</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#doctor">
-                <i class="fa fa-fw fa-arrows-v"></i> 
-                Doctor Section 
-                <i class="fa fa-fw fa-caret-down"></i>
-            </a>
-            <ul id="doctor" class="collapse">
-                <li>
-                    <a href="<?= site_url('admin/doctor/add')?>">Doctor Entry</a>
-                </li>
-                <li>
-                    <a href="<?= site_url('admin/doctor')?>">Doctor Database</a>
+                    <a href="<?= site_url('admin/patient')?>">Management</a>
                 </li>
             </ul>
         </li>
         <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#prescription">
                 <i class="fa fa-fw fa-arrows-v"></i> 
-                Prescription Section 
+                Prescription 
                 <i class="fa fa-fw fa-caret-down"></i>
             </a>
             <ul id="prescription" class="collapse">
                 <li>
-                    <a href="<?= site_url('admin/prescription/add')?>">Prescription Entry</a>
+                    <a href="<?= site_url('admin/prescription/add')?>">Entry</a>
                 </li>
                 <li>
-                    <a href="<?= site_url('admin/prescription')?>">Prescription Management</a>
+                    <a href="<?= site_url('admin/prescription')?>">Management</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#doctor">
+                <i class="fa fa-fw fa-arrows-v"></i> 
+                Doctor 
+                <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            <ul id="doctor" class="collapse">
+                <li>
+                    <a href="<?= site_url('admin/doctor/add')?>">Entry</a>
+                </li>
+                <li>
+                    <a href="<?= site_url('admin/doctor')?>">Management</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#hospital">
+                <i class="fa fa-fw fa-arrows-v"></i> 
+                Hospital 
+                <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            <ul id="hospital" class="collapse">
+                <li>
+                    <a href="<?= site_url('admin/hospital/add')?>">Entry</a>
+                </li>
+                <li>
+                    <a href="<?= site_url('admin/hospital')?>">Management</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#test">
+                <i class="fa fa-fw fa-arrows-v"></i> 
+                Tests 
+                <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            <ul id="test" class="collapse">
+                <li>
+                    <a href="<?= site_url('admin/test/add')?>">Entry</a>
+                </li>
+                <li>
+                    <a href="<?= site_url('admin/test')?>">Management</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#user">
+                <i class="fa fa-fw fa-arrows-v"></i> 
+                Users 
+                <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            <ul id="user" class="collapse">
+                <li>
+                    <a href="<?= site_url('admin/user/add')?>">Entry</a>
+                </li>
+                <li>
+                    <a href="<?= site_url('admin/user')?>">Management</a>
                 </li>
             </ul>
         </li>
